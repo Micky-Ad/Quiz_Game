@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <!-- Header for for the game with a timer and the high score savings -->
   <div class="container">
     <div class="header">
       <div class="highscore-container">
@@ -28,12 +29,11 @@
     </div>
     <div class="body">
       <div class="screen hide" id="screen1">
-        <h2 class="margin-bottom-20">Fun Quiz Questions</h2>
+        <h2 class="margin-bottom-20">Fun History Quiz Questions</h2>
         <p class="margin-bottom-20">Click on Start Button to Start Game</p>
         <button class="btn btn-primary margin-bottom-20" onclick="startGame()">Start Quiz</button>
-
-
       </div>
+      <!-- Display for the Questions -->
       <div class="screen hide" id="screen2">
         <h2 class="margin-bottom-20">Question 1</h2>
         <div class="choice">
@@ -43,10 +43,8 @@
           <button class="btn btn-primary margin-bottom-20">Answer 4</button>
         </div>
         <p class="margin-bottom-20">Right or Wrong</p>
-
-
       </div>
-
+      <!-- Display for the Result and User Info Form -->
       <div class="screen hide" id="screen3">
         <h2 class="margin-bottom-20">Your Quiz Result</h2>
         <p class="margin-bottom-20">Your total score is <span>0</span></p>
