@@ -27,7 +27,7 @@ let questions = [
   },
   {
     question: "Who built the first car in America?",
-    choices: ["Nicola Tesla", "Karl Benz", "Henry Ford", ""],
+    choices: ["Nicola Tesla", "Karl Benz", "Henry Ford", "Carl Mark"],
     answer: "Henry Ford",
   },
   {
@@ -78,7 +78,54 @@ let questions = [
   },
 ];
 
+var points = 0;
+var currentQuestion = 0;
+var rightWrongInterval = null;
+var time = 60;
+var timeInterval = null;
+
+function loadQuestion(index) {
+  var question = questions[index];
+  clearTimeout(rightWrongInterval);
+  if (question == undefined) {
+    changeScreen("screen3");
+    document.getElementById("totalScore").innerHTML = points;
+    clearInterval(timeInterval);
+  } else {
+    document.getElementById("question").innerHTML = question.question;
+    document.getElementById("choice1").innerHTML = question.choices[0];
+    document.getElementById("choice2").innerHTML = question.choices[1];
+    document.getElementById("choice3").innerHTML = question.choices[2];
+    document.getElementById("choice4").innerHTML = question.choices[3];
+    currentQuestion = index;
+  }
+}
+
+function checkAnswer() {
+  var target = event.target;
+  var value = target.innerHTML;
+  var question = questions[currentQuestion];
+  if (value == question.answer) {
+    points++;
+    document.getElementById("rightWrong").innerHTML = "Right";
+  } else {
+    document.getElementById("rightWrong").innerHTML = "Wrong";
+    // loadQuestion(currentQuestion + 1);
+  }
+
+  rightWrongInterval = setTimeout(function () {
+    clearTimeout(rightWrongInterval);
+    document.getElementById("rightWrong").innerHTML = "";
+    loadQuestion(currentQuestion + 1);
+  }, 500);
+}
+
 function changeScreen(screenId) {
+  var allScreens = document.getElementsByClassName("screen");
+  for (let i = 0; i < allScreens.length; i++) {
+    allScreens[i].classList.add("hide");
+  }
+
   var screen = document.getElementById(screenId);
   screen.classList.remove("hide");
 }
@@ -86,4 +133,70 @@ changeScreen("screen1");
 
 function startGame() {
   changeScreen("screen2");
+  loadQuestion(0);
+  startTimer();
+}
+
+function saveInitial() {
+  event.preventDefault();
+  var newResult = [];
+  var userName = document.getElementById("userName").value;
+  var result = {
+    name: userName,
+    points: points,
+  };
+  var oldResults = localStorage.getItem("quiz");
+  if (oldResults == null) {
+    newResult.push(result);
+    localStorage.setItem("quiz", JSON.stringify(newResult));
+  } else {
+    oldResults = JSON.parse(oldResults);
+    console.log(oldResults);
+    oldResults.push(result);
+    localStorage.setItem("quiz", JSON.stringify(oldResults));
+  }
+  resetGame();
+}
+
+function showHighScore() {
+  changeScreen("screen4");
+  document.getElementById("high-score").innerHTML = "";
+  var scores = localStorage.getItem("quiz");
+  if (scores == null) {
+    // <p class="margin-bottom-20"></p>
+    document.getElementById("high-score").innerHTML =
+      "<p class='margin-bottom-20'> No Score found </p>";
+  } else {
+    scores = JSON.parse(scores);
+    scores.sort((a, b) =>
+      a.points < b.points ? 1 : b.points < a.points ? -1 : 0
+    );
+
+    var layouts = "";
+    scores.forEach((score) => {
+      layouts =
+        layouts +
+        `<p class='margin-bottom-20'> ${score.name} scored ${score.points} </p>`;
+    });
+    document.getElementById("high-score").innerHTML = layouts;
+  }
+}
+
+function resetGame() {
+  points = 0;
+  currentQuestion = 0;
+  time = 60;
+  changeScreen("screen1");
+}
+
+function startTimer() {
+  timeInterval = setInterval(() => {
+    time--;
+    if (time == 0) {
+      clearInterval(timeInterval);
+      changeScreen("screen3");
+      document.getElementById("totalScore").innerHTML = points;
+    }
+    document.getElementById("timer").innerHTML = time;
+  }, 1000);
 }

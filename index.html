@@ -16,14 +16,14 @@
   <div class="container">
     <div class="header">
       <div class="highscore-container">
-        <button class="btn btn-primary">View High Score</button>
+        <button class="btn btn-primary" onclick="showHighScore()">View High Score</button>
       </div>
       <div>
         <h1>QUIZ GAME</h1>
       </div>
       <div class="timer-container">
-        <p>
-          00:00
+        <p id="timer">
+
         </p>
       </div>
     </div>
@@ -35,25 +35,30 @@
       </div>
       <!-- Display for the Questions -->
       <div class="screen hide" id="screen2">
-        <h2 class="margin-bottom-20">Question 1</h2>
+        <h2 class="margin-bottom-20" id="question">Question 1</h2>
         <div class="choice">
-          <button class="btn btn-primary margin-bottom-20">Answer 1</button>
-          <button class="btn btn-primary margin-bottom-20">Answer 2</button>
-          <button class="btn btn-primary margin-bottom-20">Answer 3</button>
-          <button class="btn btn-primary margin-bottom-20">Answer 4</button>
+          <button class="btn btn-primary margin-bottom-20" id="choice1" onclick="checkAnswer()">Answer 1</button>
+          <button class="btn btn-primary margin-bottom-20" id="choice2" onclick="checkAnswer()">Answer 2</button>
+          <button class="btn btn-primary margin-bottom-20" id="choice3" onclick="checkAnswer()">Answer 3</button>
+          <button class="btn btn-primary margin-bottom-20" id="choice4" onclick="checkAnswer()">Answer 4</button>
         </div>
-        <p class="margin-bottom-20">Right or Wrong</p>
+        <p class="margin-bottom-20" id="rightWrong"></p>
       </div>
       <!-- Display for the Result and User Info Form -->
       <div class="screen hide" id="screen3">
         <h2 class="margin-bottom-20">Your Quiz Result</h2>
-        <p class="margin-bottom-20">Your total score is <span>0</span></p>
-        <form action="#">
-          <input type="text" placeholder="enter your initials">
+        <p class="margin-bottom-20">Your total score is <span id="totalScore"></span></p>
+        <form action="# " onsubmit="saveInitial()">
+          <input type="text" placeholder="enter your initials" id="userName">
           <button class="btn btn-primary">Submit</button>
         </form>
       </div>
-
+      <div class="screen hide" id="screen4">
+        <button class="btn btn-primary margin-bottom-20" onclick="resetGame()">Home Page</button>
+        <h2 class="margin-bottom-20">High Score List</h2>
+        <div id="high-score">
+        </div>
+      </div>
     </div>
   </div>
 
