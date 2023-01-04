@@ -197,6 +197,6 @@ function startTimer() {
       changeScreen("screen3");
       document.getElementById("totalScore").innerHTML = points;
     }
-    document.getElementById("timer").innerHTML = time;
+    document.getElementById("timer").innerHTML = `Time Left: ${time}`;
   }, 1000);
 }
