@@ -21,7 +21,7 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 # Screenshot:
 ----------------------------------------------------------------------
 
- ![alt text]()
+ ![alt text](assets/Images/Screenshot-1.PNG)
 
 # Usage:
 ----------------------------------------------------------------------
