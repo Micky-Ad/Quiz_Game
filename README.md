@@ -25,7 +25,7 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 
 # Usage:
 ----------------------------------------------------------------------
--	Fun quiz application for which runs on the browser.
+-	Fun quiz application which runs on the browser.
 
 # Built with
 -----------------------------------------------------------------------
