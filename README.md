@@ -15,7 +15,7 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 # Links
 -----------------------------------------------------------------------
 ### [ Deployed Website]()
-### [Repository]()
+### [Repository](https://github.com/Micky-Ad/Quiz_Game)
 
 
 # Screenshot:
