@@ -12,6 +12,13 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 -	When the game is over, an option to save initials and score are presented.
 -	Local storage is used to save usernames and high scores. Upon clicking the highscore button users can view past highscores.
 
+
+# Built with
+-----------------------------------------------------------------------
+- HTML  
+- CSS 
+- JavaScript
+
 # Links
 -----------------------------------------------------------------------
 ### [ Deployed Website]()
@@ -27,11 +34,6 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 ----------------------------------------------------------------------
 -	Fun quiz application which runs on the browser.
 
-# Built with
------------------------------------------------------------------------
-- HTML  
-- CSS 
-- JavaScript
 
 # License:
 -----------------------------------------------------------------------
