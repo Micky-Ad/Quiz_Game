@@ -5,12 +5,12 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 # Features for the App 
 -----------------------------------------------------------------------  
 -	User is presented with home page with the title and an option to start the game. 
--	When user click on the start button a timer starts and user is presented with a question
+-	When user click on the start button a timer starts and user is presented with a question.
 -	When user answers a question, the next question is presented.
--	When user answers a question incorrectly time is subtracted from the clock
--	When all questions are answered, or the timer reaches 0 then the game is over
--	When the game is over, an option to save my initials and my score
--	Local storage is used to save usernames and high scores
+-	When user answers a question incorrectly time is subtracted from the clock.
+-	When all questions are answered, or the timer reaches 0 then the game is over.
+-	When the game is over, an option to save initials and score are presented.
+-	Local storage is used to save usernames and high scores. Upon clicking the highscore button users can view past highscores.
 
 # Links
 -----------------------------------------------------------------------
