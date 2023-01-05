@@ -101,6 +101,7 @@ function loadQuestion(index) {
   }
 }
 
+// checking answers
 function checkAnswer() {
   var target = event.target;
   var value = target.innerHTML;
@@ -109,8 +110,8 @@ function checkAnswer() {
     points++;
     document.getElementById("rightWrong").innerHTML = "Right";
   } else {
+    time = time - 5;
     document.getElementById("rightWrong").innerHTML = "Wrong";
-    // loadQuestion(currentQuestion + 1);
   }
 
   rightWrongInterval = setTimeout(function () {
@@ -125,22 +126,25 @@ function changeScreen(screenId) {
   for (let i = 0; i < allScreens.length; i++) {
     allScreens[i].classList.add("hide");
   }
-
   var screen = document.getElementById(screenId);
   screen.classList.remove("hide");
 }
+// Displaying the welcome page - Game Title and Prompt user to start
 changeScreen("screen1");
 
+// Start game with question displayed on screen 2
 function startGame() {
   changeScreen("screen2");
   loadQuestion(0);
   startTimer();
 }
 
+// local storage for user name
 function saveInitial() {
   event.preventDefault();
   var newResult = [];
   var userName = document.getElementById("userName").value;
+  //for local storage key value pair
   var result = {
     name: userName,
     points: points,
@@ -158,20 +162,20 @@ function saveInitial() {
   resetGame();
 }
 
+// Local storage for highscore
 function showHighScore() {
   changeScreen("screen4");
   document.getElementById("high-score").innerHTML = "";
   var scores = localStorage.getItem("quiz");
   if (scores == null) {
-    // <p class="margin-bottom-20"></p>
     document.getElementById("high-score").innerHTML =
       "<p class='margin-bottom-20'> No Score found </p>";
   } else {
     scores = JSON.parse(scores);
+    //sort highscore display
     scores.sort((a, b) =>
       a.points < b.points ? 1 : b.points < a.points ? -1 : 0
     );
-
     var layouts = "";
     scores.forEach((score) => {
       layouts =
@@ -182,6 +186,7 @@ function showHighScore() {
   }
 }
 
+// Reset game with screen1 and values for points,Current Question and time
 function resetGame() {
   points = 0;
   currentQuestion = 0;
@@ -189,6 +194,7 @@ function resetGame() {
   changeScreen("screen1");
 }
 
+// Timer function
 function startTimer() {
   timeInterval = setInterval(() => {
     time--;
