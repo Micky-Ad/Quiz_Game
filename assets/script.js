@@ -198,7 +198,7 @@ function resetGame() {
 function startTimer() {
   timeInterval = setInterval(() => {
     time--;
-    if (time == 0) {
+    if (time <= 0) {
       clearInterval(timeInterval);
       changeScreen("screen3");
       document.getElementById("totalScore").innerHTML = points;
