@@ -84,6 +84,8 @@ var rightWrongInterval = null;
 var time = 60;
 var timeInterval = null;
 
+questions.sort(() => Math.random() - 0.5);
+
 function loadQuestion(index) {
   var question = questions[index];
   clearTimeout(rightWrongInterval);
